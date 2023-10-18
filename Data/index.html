@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="EnCa">
+
+<head>
+    <title>Data</title>
+    <link rel="stylesheet" type="text/css" href="data-style.css">
+    <script src="data.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="header">
+        <div class="settings-container">
+            <div class="settings-icon" onclick="toggleSettingsMenu()">
+                <img src="../settings-icon.png" alt="Settings Icon">
+            </div>
+            <div class="settings-menu">
+                <div class="settings-option" id="themeToggle" onclick="toggleTheme()">Light Mode</div>
+                <div class="settings-option" id="borderToggle" onclick="toggleTableBorder()">Enable Border</div>
+            </div>
+        </div>
+
+        <h1>Data</h1>
+
+        <div class="control-bar">
+            <div class="search-filter-container">
+                <div class="season-start-date-dropdown">
+                    <select id="seasonStartDateSelect" onchange="filterTableBySeasonStartDate()">
+                    </select>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search" name="search" onkeyup="filterTable()" placeholder="Search by name">
+                </div>
+                <div class="filter-icon" onclick="toggleFilterMenu()">
+                    <img src="filter-icon.png" alt="Filter Icon">
+                </div>
+                <div class="filter-container">
+                    <div class="filter-icon" onclick="toggleFilterMenu()"></div>
+                    <div class="filter-menu">
+                        <div class="filter-option" id="filterTable" onclick="applySorting('name-asc')">Name A-Z</div>
+                        <div class="filter-option" id="filterTable" onclick="applySorting('name-desc')">Name Z-A</div>
+                        <div class="filter-option" id="filterTable" onclick="applySorting('hours-asc')">Hours (Ascending)</div>
+                        <div class="filter-option" id="filterTable" onclick="applySorting('hours-desc')">Hours (Descending)</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Hours</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div id="arrow-icon" class="arrow-icon" onclick="goBack()">
+        <img src="back-arrow.png" alt="Back Arrow">
+    </div>
+</body>
+</html>

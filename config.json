@@ -1,0 +1,16 @@
+{
+  "managingPassword": "login",
+  "MySQL": {
+    "address": "localhost",
+    "dbName": "attendance",
+    "apiUsername": "php",
+    "apiPassword": "thisDataIsPublicIdiot",
+    "updateToken": "UpdatePlease",
+    "updateUsername": "update",
+    "updatePassword": "thisIsInsecure",
+    "createUserToken": "UserAddPlease",
+    "timeZoneOffset": "0:00"
+  },
+  "updateActiveUsersDelayInSeconds": 5,
+  "seasonDisplay": "year"
+}

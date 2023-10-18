@@ -1,0 +1,612 @@
+/* WARNING - THIS HAS NOT BEEN ORGANIZED IN ANY WAY */
+
+
+/* data-style.css */
+
+/* User data container */
+#user-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+/* User name */
+.user-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #F1F1F1;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Id on user boxes */
+.user-id {
+    font-size: 12px;
+    color: #A1A1A1;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+/* Add styles for the user boxes */
+.user-container {
+    background-color: #272727;
+    color: #F1F1F1;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    width: calc(10% - 10px);
+    height: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+}
+
+.user-container.has-management:hover {
+    cursor: pointer;
+    background-color: #444; /* Change the background color on hover for users with management permissions */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Add styles for the Manage button */
+.manage-button {
+    background-color: #3EA6FF;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: background-color 0.3s;
+}
+
+/* Style for the login modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 300px;
+    background-color: #272727;
+    color: #F1F1F1;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Style for the modal content */
+.modal-content {
+    padding: 20px;
+}
+
+/* Style for the close button in the top right corner */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #F1F1F1;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Style for the login input */
+#password-input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto; /* Center the input horizontally */
+    border: none;
+    background-color: #272727;
+    color: #F1F1F1;
+    border-bottom: 1px solid #F1F1F1;
+    outline: none;
+    text-align: center; /* Center the text within the input */
+}
+
+/* Style for the login button */
+#login-button {
+    background-color: #3EA6FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%; /* Make the button width 100% to match the input */
+    transition: background-color 0.3s;
+}
+
+/* Style for the close button */
+#close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #3EA6FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Style for the login button when hovered */
+#login-button:hover {
+    background-color: #3388CC;
+}
+
+#manage-button {
+    background-color: #3EA6FF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#manage-button:hover {
+    background-color: #3388CC;
+}
+
+.error {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+    margin-top: 5px; /* Add margin to separate from the Login button */
+}
+
+/* Add this CSS to move the close button to the top-right corner */
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Add this CSS to create spacing between the error and the login button */
+.spacing {
+    height: 10px;
+}
+
+/* Add this CSS to style the buttons */
+#log-all-out-button {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: background-color 0.3s;
+}
+
+#log-all-out-button:hover {
+    background-color: #bd0202;
+}
+
+.user-login-time {
+    font-size: 12px;
+    color: #A1A1A1;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+/* Style for the user data popup */
+.user-data-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.user-data-content {
+    background-color: #272727;
+    color: #F1F1F1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.user-data-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.user-data-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Add spacing to the table cells */
+#user-data-table td {
+    padding: 10px;
+}
+
+/* Add some margin to the table rows for spacing */
+#user-data-table tr {
+    margin-bottom: 10px;
+}
+
+#user-data-table {
+    margin-bottom: 20px;
+}
+
+/* Add this CSS to style the buttons */
+#log-out-button {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color 0.3s;
+}
+
+#log-out-button:hover {
+    background-color: #bd0202;
+}
+
+.settings-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    z-index: 1;
+}
+
+/* Style the settings menu container */
+.settings-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #272727;
+    color: #F1F1F1;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 5px 0;
+    width: 120px;
+}
+
+/* Style the settings options like the filter options */
+.settings-option {
+    cursor: pointer;
+    padding: 8px 12px;
+    color: #F1F1F1;
+    text-decoration: none;
+    display: block;
+}
+
+.settings-option:hover {
+    background-color: #444;
+}
+
+body.light-mode .settings-icon img {
+    filter: none;
+}
+
+body.light-mode .user-container {
+    background-color: #1e8535;
+    color: #0F0F0F;
+}
+
+body.light-mode .user-container.has-management:hover {
+    background-color: #065500;
+}
+
+/* Light mode login menu styles */
+body.light-mode .modal {
+    background-color: #818181;
+    color: #F1F1F1;
+}
+
+body.light-mode #password-input {
+    background-color: #818181;
+    color: #0F0F0F;
+    border-bottom: 1px solid #0F0F0F;
+}
+
+body.light-mode #password-input::placeholder {
+    color: #0F0F0F;
+}
+
+.data-icon {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999;
+}
+
+.data-icon img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    filter: invert(100%);
+}
+
+body.light-mode .data-icon img {
+    filter: none;
+}
+
+.add-user-button {
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    cursor: pointer;
+    background-color: #272727;
+    color: #F1F1F1;
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 999;
+}
+
+
+.add-user-button:hover {
+    background-color: #444;
+}
+
+.add-user-icon {
+    font-size: 24px;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+/* CSS for "Create User" button and "Add User" modal */
+.create-user-button {
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    cursor: pointer;
+    background-color: #272727;
+    color: #F1F1F1;
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 999;
+}
+
+.create-user-button:hover {
+    background-color: #444;
+}
+
+body.light-mode .create-user-button {
+    background-color: #818181;
+}
+
+body.light-mode .create-user-button {
+    background-color: #A1A1A1;
+}
+
+.create-user-menu-icon {
+    font-size: 24px;
+    line-height: 50px;
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+}
+
+#add-user-menu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 300px;
+    background-color: #272727;
+    color: #F1F1F1;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+body.light-mode #add-user-menu {
+    background-color: #818181;
+}
+
+
+/* Add User Modal Content Styles */
+.modal-content {
+    padding: 20px;
+}
+
+/* Close Button Styles */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #F1F1F1;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Input Styles */
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    background-color: #272727;
+    color: #F1F1F1;
+    border-bottom: 1px solid #F1F1F1;
+    outline: none;
+    text-align: center;
+}
+
+#rfid-input {
+    width: 60%;
+}
+
+/* Button Styles */
+.add-user-menu-button {
+    background-color: #3EA6FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.3s;
+    margin-left: 5px;
+}
+
+#tap-rfid-button {
+    background-color: #3EA6FF;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    min-width: 80px;
+    border-radius: 5px;
+    text-align: center;
+    right: 10px;
+    transition: background-color 0.3s;
+    margin-left: 5px;
+}
+
+#tap-rfid-button:hover {
+    background-color: #3388CC;
+}
+
+#add-user-button {
+    background-color: #3EA6FF;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color 0.3s;
+}
+
+#add-user-button:hover {
+    background-color: #3388CC;
+}
+
+#add-user-menu-content {
+    height: 225px;
+}
+
+#name-input {
+    width: 90%;
+}
+
+body.light-mode #name-input {
+    background-color: #818181;
+    color: #0F0F0F;
+    border-bottom: 1px solid #0F0F0F;
+    cursor: pointer;
+}
+
+body.light-mode #name-input::placeholder {
+    color: #0F0F0F;
+}
+
+body.light-mode #rfid-input {
+    background-color: #818181;
+    color: #0F0F0F;
+    border-bottom: 1px solid #0F0F0F;
+    cursor: pointer;
+}
+
+body.light-mode #rfid-input::placeholder {
+    color: #0F0F0F;
+}
+
+.input-container {
+    display: flex; /* Make child elements appear side by side */
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* Styling for phones */
+@media (max-width: 768px) {
+    .user-container {
+        width: calc(50% - 40px);
+    }
+
+    .settings-option:hover {
+        background-color: #272727;
+    }
+
+    #password-input {
+        outline: none;
+        border-top: 10px solid #272727;
+    }
+
+    #name-input {
+        outline: none;
+        border-top: 15px solid #272727;
+    }
+
+    #rfid-input {
+        outline: none;
+        border-top: 15px solid #272727;
+    }
+
+    body.light-mode #password-input {
+        border-top: 10px solid #818181;
+    }
+
+    body.light-mode #name-input {
+        border-top: 10px solid #818181;
+    }
+
+    body.light-mode #rfid-input {
+        border-top: 10px solid #818181;
+    }
+}

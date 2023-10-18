@@ -1,0 +1,2 @@
+Thanks to Larry Bank for the lcd1602 library.
+https://github.com/bitbank2/LCD1602

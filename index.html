@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="EnCa">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="Data/data-style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>Users</h1>
+<button id="manage-button" class="manage-button" style="display: none">Manage</button>
+<div class="settings-container">
+    <div class="settings-icon" id="settings-icon">
+        <img src="settings-icon.png" alt="Settings" id="settings-img" onclick="toggleSettingsMenu()">
+    </div>
+    <div class="settings-menu" id="settings-menu">
+        <div class="settings-option" id="themeToggle" onclick="toggleTheme()">Light Mode</div>
+    </div>
+</div>
+<button id="log-all-out-button" class="log-all-out-button" style="display: none">Log all out</button>
+<div id="user-container"></div>
+<div id="login-modal" class="modal">
+    <div id="login-modal-content" class="modal-content">
+        <span id="close-login-modal" class="close">&times;</span>
+        <h3 id="login-modal-text">Login to manage users</h3>
+        <input type="password" id="password-input" placeholder="Password">
+        <div id="password-error" class="error"></div>
+        <div class="spacing"></div>
+        <button id="login-button">Submit</button>
+    </div>
+</div>
+<div id="user-data-popup" class="user-data-popup">
+    <div id="user-data-content" class="user-data-content">
+        <h2 id="user-data-text">User Data</h2>
+        <span id="user-data-close" class="user-data-close">×</span>
+        <table id="user-data-table">
+            <tbody></tbody>
+        </table>
+        <button id="log-out-button" class="log-out-button">Log out</button>
+    </div>
+</div>
+<script src="script.js"></script>
+<div id="data-icon" class="data-icon" onclick="goToData()">
+    <img src="data-icon.png" alt="Data Icon">
+</div>
+<div class="create-user-button" id="create-user-menu-button" style="display: none">
+    <div class="create-user-menu-icon" id="create-user-menu-icon">+</div>
+</div>
+<div id="add-user-menu" class="modal">
+    <div class="modal-content" id="add-user-menu-content">
+        <span id="close-add-user-menu" class="close">&times;</span>
+        <h3 id="add-user-menu-text">Add User</h3>
+        <div class="input-container" id="name-input-container">
+            <input type="text" id="name-input" pattern=".{1,32}" placeholder="Name">
+        </div>
+        <div class="input-container" id="rfid-input-container">
+            <input type="text" id="rfid-input" pattern="[0-9]{1,12}" placeholder="RFID Number">
+            <button id="tap-rfid-button" class="add-user-menu-button">Tap RFID</button>
+        </div>
+        <button id="add-user-button" class="add-user-menu-button">Add User</button>
+    </div>
+</div>
+</body>
+</html>
