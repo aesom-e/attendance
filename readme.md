@@ -202,7 +202,7 @@ The config file is located in config.json
 It's configured with default values so make sure to change them
 
 ```json
-// Just a note, json doesn't allow comments so don't past any of this
+// Just a note, json doesn't allow comments so don't paste any of this
 {
   "managingPassword": "login", // Update
   "MySQL": {
