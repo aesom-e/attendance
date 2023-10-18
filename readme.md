@@ -7,12 +7,11 @@ This installation is done on a raspberry pi 4 (specifically a pi 4 b running on 
 
 First, run this code
 ```shell
-sudo apt install php7.4
+sudo apt install php -y
 
-# This is only necessary if you are planning on using MySQL
-sudo apt install php7.4-mysql
+sudo apt install php-mysql -y
 
-sudo ln -s /etc/php/7.4/mods-available/mysqli.ini /etc/php/7.4/apache2/conf.d/
+sudo ln -s /etc/php/[version]/mods-available/mysqli.ini /etc/php/[version]/apache2/conf.d/
 
 sudo service apache2 restart
 
@@ -41,7 +40,7 @@ As a note, this application has not been built with security in mind
 
 Run these commands:
 ```shell
-sudo apt install mariadb-server
+sudo apt install mariadb-server -y
 
 sudo mysql_secure_installation
 # Options at install:
