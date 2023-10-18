@@ -11,6 +11,7 @@ if (isset($_GET["token"])) {
     }
 } else {
     echo "Missing token parameter";
+    die();
 }
 
 // Handle action
