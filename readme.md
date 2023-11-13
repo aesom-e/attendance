@@ -1,5 +1,13 @@
 # Attendance Tracker
 
+## Credit
+
+Thanks to Larry Bank for the lcd1602 library. 
+https://github.com/bitbank2/LCD1602
+
+And jpedrodias for the case 3d models. 
+https://www.thingiverse.com/thing:3070519
+
 ## First time setup
 
 ### Installation
@@ -226,7 +234,7 @@ It's configured with default values so make sure to change them
 
 ### Using the site
 
-Reboot the pi and wait for the LCD display to show the macine's ip
+Reboot the pi and wait for the LCD to show the machine's ip
 
 It should look like 192.168.x.x
 
@@ -252,4 +260,27 @@ I have not given much thought to securing the back end from users who want to re
 This should not be used in a situation where security is necessary
 
 ## Seasons and logging
+
+### Creating a new season
+
+php MySQL/cmdNewSeason.php <Date in yyyy-mm-dd>
+
+The season should automatically appear in the dropdown under the Data section of the website
+
+### Logging 
+
+Logging is automatically done by the php scripts
+
+SQL commands run directly will not be logged
+
+To view logs run these commands inside MySQL:
+
+```sql
+USE attendance;
+SELECT * FROM records;
+
+# Filtering via userId
+SELECT * FROM records WHERE userId = [User id];
+
+```
 
