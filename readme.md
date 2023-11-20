@@ -111,7 +111,9 @@ DESC `pastseasons`;
 
 CREATE TABLE `attendance`.`records` (`recordId` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
     `userId` INT UNSIGNED NOT NULL, `startTime` DATETIME NOT NULL, 
-    `endTime` DATETIME NOT NULL, PRIMARY KEY (`recordId`)) ENGINE = InnoDB;
+    `endTime` DATETIME NOT NULL,
+    `notes` VARCHAR(64), 
+    PRIMARY KEY (`recordId`)) ENGINE = InnoDB;
 
 DESC `records`;
 
@@ -123,6 +125,7 @@ DESC `records`;
 | userId    | int(10) unsigned | NO   |     | NULL    |                |
 | startTime | datetime         | NO   |     | NULL    |                |
 | endTime   | datetime         | NO   |     | NULL    |                |
+| notes     | varchar(64)      | YES  |     | NULL    |                |
 +-----------+------------------+------+-----+---------+----------------+
 */
 
