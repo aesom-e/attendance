@@ -85,7 +85,7 @@ Your table should look like this
 | userId     | int(10) unsigned       | NO   | PRI | NULL                | auto_increment |
 | name       | varchar(32)            | NO   |     | NULL                |                |
 | hours      | decimal(10,2) unsigned | NO   |     | NULL                |                |
-| rfidKey    | bigint(20)             | YES  | UNI | NULL                |                |
+| rfidKey    | bigint(20) unsigned    | NO   | UNI | NULL                |                |
 | loggedIn   | tinyint(1)             | NO   |     | NULL                |                |
 | lastLogin  | datetime               | NO   |     | 0000-00-00 00:00:00 |                |
 | lastLogout | datetime               | NO   |     | 0000-00-00 00:00:00 |                |
