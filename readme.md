@@ -151,7 +151,7 @@ QUIT;
 
 If you would like to create a test user to check if everything is working run this:
 ```shell
-sudo mysql -u root -p
+sudo mysql
 ```
 ```sql
 USE attendance;
