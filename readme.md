@@ -55,8 +55,7 @@ sudo mysql_secure_installation
 # Just press enter for the "Enter current password for root"
 # Then enter 'y' for everything else
 
-sudo mysql -u root -p
-# Enter the password you setup in the last step
+sudo mysql
 ```
 
 Once in the MySQL command line enter these SQL commands:
@@ -70,8 +69,8 @@ CREATE TABLE `attendance`.`users` (`userId` INT UNSIGNED NOT NULL AUTO_INCREMENT
     `hours` DECIMAL(10,2) UNSIGNED NOT NULL, 
     `rfidKey` BIGINT UNSIGNED UNIQUE NOT NULL, 
     `loggedIn` BOOLEAN NOT NULL,
-     `lastLogin` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00', 
-     `lastLogout` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00', 
+    `lastLogin` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00', 
+    `lastLogout` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00', 
      PRIMARY KEY (`userId`))
      ENGINE = InnoDB;
 
