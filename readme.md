@@ -19,6 +19,7 @@ sudo apt install php -y
 
 sudo apt install php-mysql -y
 
+# Ensure you change [version] to your php version
 sudo ln -s /etc/php/[version]/mods-available/mysqli.ini /etc/php/[version]/apache2/conf.d/
 
 sudo service apache2 restart
