@@ -55,6 +55,8 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
 }
 
 /* Add styles for the Manage button */
@@ -88,7 +90,9 @@ body {
 
 /* Style for the modal content */
 .modal-content {
-    padding: 20px;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 /* Style for the close button in the top right corner */
@@ -170,6 +174,13 @@ body {
     right: 0;
     padding: 10px;
     cursor: pointer;
+    font-size: 24px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.close:hover {
+    opacity: 1;
 }
 
 /* Add this CSS to create spacing between the error and the login button */
@@ -459,7 +470,9 @@ body.light-mode #add-user-menu {
 
 /* Add User Modal Content Styles */
 .modal-content {
-    padding: 20px;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 /* Close Button Styles */
@@ -470,6 +483,13 @@ body.light-mode #add-user-menu {
     color: #F1F1F1;
     font-size: 20px;
     cursor: pointer;
+    font-size: 24px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.close:hover {
+    opacity: 1;
 }
 
 /* Input Styles */
@@ -571,6 +591,19 @@ body.light-mode #rfid-input::placeholder {
     display: flex; /* Make child elements appear side by side */
     align-items: center;
     margin: 10px 0;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.input-container label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.input-with-button {
+    display: flex;
+    gap: 10px;
 }
 
 /* Styling for phones */
@@ -609,4 +642,104 @@ body.light-mode #rfid-input::placeholder {
     body.light-mode #rfid-input {
         border-top: 10px solid #818181;
     }
+
+    .input-with-button {
+        flex-direction: column;
+    }
+  
+    .users-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+.user-count-badge {
+    display: inline-block;
+    font-size: 0.7em;
+    color: #A1A1A1;
+    font-weight: normal;
+}
+
+body.light-mode .user-count-badge {
+    color: #555555;
+}
+
+/* Add to your style.css */
+:root {
+  --primary-color: #3EA6FF;
+  --secondary-color: #272727;
+  --text-color: #F1F1F1;
+  --error-color: #FF0000;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header styling */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 15px 0;
+}
+
+.header-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Users grid */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 0 20px;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Button styling */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3388CC;
+}
+
+.btn-secondary {
+  background-color: #444;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
 }

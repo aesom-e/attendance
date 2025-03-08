@@ -384,6 +384,7 @@ async function updateActiveUserBoxes() {
 
         // Find the user IDs that signed in
         const newSignIns = newActiveUserIds.filter(id => !activeUserIds.includes(id));
+        
         // Remove user boxes for logged-out users
         loggedOutUserIds.forEach(userId => {
             const userBox = document.getElementById(`user-box-${userId}`);
@@ -401,6 +402,9 @@ async function updateActiveUserBoxes() {
 
         // Update the active user IDs
         activeUserIds = newActiveUserIds;
+        
+        // Update the user count display
+        updateUserCount();
     } catch (error) {
         console.error("Error updating active user boxes:", error);
     }
@@ -471,6 +475,14 @@ async function addUser() {
     }
 }
 
+// Function to update the user count in the header
+function updateUserCount() {
+    const userCountElement = document.getElementById("user-count");
+    if (userCountElement) {
+        const count = activeUserIds.length;
+        userCountElement.textContent = `(${count})`;
+    }
+}
 
 
 let noHideLogin = ["password-input", "login-modal", "login-modal-content", "login-modal-text", "login-button"];
@@ -483,6 +495,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     await generateUserBoxes();
     await updateButtonVisibility();
     await fetchManagementPassword();
+    updateUserCount(); // Add this line to update the count initially
 
     const themeCookie = getCookie("theme");
     const button = document.getElementById("themeToggle")
