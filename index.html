@@ -2,28 +2,31 @@
 <html lang="en-CA">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
-    <link rel="stylesheet" type="text/css" href="Data/data-style.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Attendance Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <header class="page-header">
         <div class="settings-container">
-            <div class="settings-icon" id="settings-icon">
-                <img src="settings-icon.png" alt="Settings" id="settings-img" onclick="toggleSettingsMenu()">
+            <div class="settings-icon" id="settings-icon" onclick="toggleSettingsMenu()">
+                <img src="settings-icon.png" alt="Settings" id="settings-img">
             </div>
             <div class="settings-menu" id="settings-menu">
                 <div class="settings-option" id="themeToggle" onclick="toggleTheme()">Light Mode</div>
             </div>
         </div>
 
-        <h1>Users <span id="user-count" class="user-count-badge">(0)</span></h1>
+        <h1 class="page-title">Users <span id="user-count" class="user-count-badge">(0)</span></h1>
         
         <div class="header-controls">
-            <button id="manage-button" class="manage-button" style="display: none">Manage</button>
-            <button id="log-all-out-button" class="log-all-out-button" style="display: none">Log all out</button>
+            <button id="manage-button" class="btn btn-primary" style="display: none">
+                Manage
+            </button>
+            <button id="log-all-out-button" class="btn btn-danger" style="display: none">
+                Log all out
+            </button>
         </div>
     </header>
 
@@ -31,36 +34,38 @@
         <div id="user-container" class="users-grid"></div>
     </main>
 
-    <!-- Modals -->
+    <!-- Login Modal -->
     <div id="login-modal" class="modal">
         <div id="login-modal-content" class="modal-content">
             <span id="close-login-modal" class="close">&times;</span>
-            <h3 id="login-modal-text">Login to manage users</h3>
+            <h3 id="login-modal-text" class="modal-title">Login to manage users</h3>
             <div class="form-group">
-                <input type="password" id="password-input" placeholder="Password">
+                <input type="password" id="password-input" placeholder="Enter password">
                 <div id="password-error" class="error"></div>
             </div>
-            <button id="login-button" class="btn btn-primary">Submit</button>
+            <button id="login-button" class="btn btn-primary">Login</button>
         </div>
     </div>
 
+    <!-- User Data Popup -->
     <div id="user-data-popup" class="user-data-popup">
         <div id="user-data-content" class="user-data-content">
-            <h2 id="user-data-text">User Data</h2>
+            <h2 id="user-data-text" class="modal-title">User Data</h2>
             <span id="user-data-close" class="user-data-close">&times;</span>
             <div class="user-data-container">
-                <table id="user-data-table">
+                <table id="user-data-table" class="user-data-table">
                     <tbody></tbody>
                 </table>
             </div>
-            <button id="log-out-button" class="log-out-button">Log out</button>
+            <button id="log-out-button" class="btn btn-danger">Log out</button>
         </div>
     </div>
 
+    <!-- Add User Modal -->
     <div id="add-user-menu" class="modal">
         <div class="modal-content" id="add-user-menu-content">
             <span id="close-add-user-menu" class="close">&times;</span>
-            <h3 id="add-user-menu-text">Add User</h3>
+            <h3 id="add-user-menu-text" class="modal-title">Add New User</h3>
             <div class="form-group">
                 <div class="input-container" id="name-input-container">
                     <label for="name-input">Name</label>
@@ -88,7 +93,7 @@
     <div class="create-user-button" id="create-user-menu-button" style="display: none" title="Add New User">
         <div class="create-user-menu-icon" id="create-user-menu-icon">+</div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
