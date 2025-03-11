@@ -1,232 +1,321 @@
-/* WARNING - THIS HAS NOT BEEN ORGANIZED IN ANY WAY */
-
-
-/* data-style.css */
-
-/* User data container */
-#user-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
+:root {
+    --primary-color: #4e54c8;
+    --primary-light: #8f94fb;
+    --secondary-color: #32325d;
+    --text-color: #f8f9fa;
+    --text-dark: #212529;
+    --bg-dark: #1a1c2a;
+    --bg-light: #f8f9fa;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
 
-/* User name */
-.user-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #F1F1F1;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* Id on user boxes */
-.user-id {
-    font-size: 12px;
-    color: #A1A1A1;
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-}
-
-/* Add styles for the user boxes */
-.user-container {
-    background-color: #272727;
-    color: #F1F1F1;
-    padding: 5px;
-    margin: 10px;
-    border-radius: 5px;
-    width: calc(10% - 10px);
-    height: 50px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    transition: background-color 0.3s ease;
-}
-
-.user-container.has-management:hover {
-    cursor: pointer;
-    background-color: #444; /* Change the background color on hover for users with management permissions */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: var(--transition);
 }
 
-/* Add styles for the Manage button */
-.manage-button {
-    background-color: #3EA6FF;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 5px 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    transition: background-color 0.3s;
+body.light-mode {
+    background: var(--bg-light);
+    color: var(--text-dark);
 }
 
-/* Style for the login modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    width: 300px;
-    background-color: #272727;
-    color: #F1F1F1;
+/* Header */
+.page-header {
+    padding: 2rem 1rem;
     text-align: center;
-    border-radius: 5px;
-}
-
-/* Style for the modal content */
-.modal-content {
-    padding: 25px;
-    border-radius: var(--border-radius);
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    border-radius: 0 0 30px 30px;
+    margin-bottom: 2rem;
     box-shadow: var(--box-shadow);
 }
 
-/* Style for the close button in the top right corner */
-.close-button {
+.page-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.user-count-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.header-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Settings Button & Menu */
+.settings-container {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #F1F1F1;
-    font-size: 20px;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+}
+
+.settings-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: var(--transition);
 }
 
-/* Style for the login input */
-#password-input {
-    width: 80%;
-    padding: 10px;
-    margin: 10px auto; /* Center the input horizontally */
-    border: none;
-    background-color: #272727;
-    color: #F1F1F1;
-    border-bottom: 1px solid #F1F1F1;
-    outline: none;
-    text-align: center; /* Center the text within the input */
+.settings-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
-/* Style for the login button */
-#login-button {
-    background-color: #3EA6FF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%; /* Make the button width 100% to match the input */
-    transition: background-color 0.3s;
+.settings-icon img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
 }
 
-/* Style for the close button */
-#close-button {
+.settings-menu {
+    display: none;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #3EA6FF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    top: 50px;
+    left: 0;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    z-index: 100;
+}
+
+.settings-option {
+    padding: 0.8rem 1.2rem;
     cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
 }
 
-/* Style for the login button when hovered */
-#login-button:hover {
-    background-color: #3388CC;
+.settings-option:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
-#manage-button {
-    background-color: #3EA6FF;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* User Container Grid */
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1.5rem 2rem;
 }
 
-#manage-button:hover {
-    background-color: #3388CC;
+.user-container {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 1.2rem 1rem;
+    position: relative;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 }
 
-.error {
-    font-size: 14px;
-    color: red;
-    text-align: center;
-    margin-top: 5px; /* Add margin to separate from the Login button */
-}
-
-/* Add this CSS to move the close button to the top-right corner */
-.close {
+.user-container::before {
+    content: '';
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
-    padding: 10px;
+    height: 4px;
+    background: var(--primary-light);
+}
+
+.user-container.has-management:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    font-size: 24px;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.user-id {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 0.7rem;
     opacity: 0.7;
-    transition: opacity 0.3s;
+}
+
+.user-login-time {
+    margin-top: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inherit;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn-primary:hover {
+    background: var(--primary-light);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: var(--text-color);
+}
+
+.btn-danger:hover {
+    background: #e04c59;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-container {
+    margin-bottom: 1rem;
+}
+
+.input-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.input-with-button {
+    display: flex;
+    gap: 0.5rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-family: inherit;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 .close:hover {
     opacity: 1;
 }
 
-/* Add this CSS to create spacing between the error and the login button */
-.spacing {
-    height: 10px;
+.error {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
 }
 
-/* Add this CSS to style the buttons */
-#log-all-out-button {
-    background-color: #FF0000;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 5px 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    transition: background-color 0.3s;
-}
-
-#log-all-out-button:hover {
-    background-color: #bd0202;
-}
-
-.user-login-time {
-    font-size: 12px;
-    color: #A1A1A1;
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-}
-
-/* Style for the user data popup */
+/* User Data Popup */
 .user-data-popup {
     display: none;
     position: fixed;
@@ -234,208 +323,106 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 999;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
 }
 
 .user-data-content {
-    background-color: #272727;
-    color: #F1F1F1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
 }
 
 .user-data-close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    opacity: 0.7;
     cursor: pointer;
 }
 
-.user-data-info {
-    margin-top: 20px;
+.user-data-close:hover {
+    opacity: 1;
+}
+
+.user-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 2rem;
+}
+
+.user-data-table th,
+.user-data-table td {
+    padding: 0.8rem;
     text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Add spacing to the table cells */
-#user-data-table td {
-    padding: 10px;
+.user-data-table th {
+    font-weight: 500;
+    color: var(--text-color);
+    opacity: 0.8;
 }
 
-/* Add some margin to the table rows for spacing */
-#user-data-table tr {
-    margin-bottom: 10px;
-}
-
-#user-data-table {
-    margin-bottom: 20px;
-}
-
-/* Add this CSS to style the buttons */
-#log-out-button {
-    background-color: #FF0000;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 10px 20px;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: background-color 0.3s;
-}
-
-#log-out-button:hover {
-    background-color: #bd0202;
-}
-
-.settings-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    z-index: 1;
-}
-
-/* Style the settings menu container */
-.settings-menu {
-    display: none;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    background-color: #272727;
-    color: #F1F1F1;
-    border: 1px solid #333;
-    border-radius: 5px;
-    padding: 5px 0;
-    width: 120px;
-}
-
-/* Style the settings options like the filter options */
-.settings-option {
-    cursor: pointer;
-    padding: 8px 12px;
-    color: #F1F1F1;
-    text-decoration: none;
-    display: block;
-}
-
-.settings-option:hover {
-    background-color: #444;
-}
-
-body.light-mode .settings-icon img {
-    filter: none;
-}
-
-body.light-mode .user-container {
-    background-color: #1e8535;
-    color: #0F0F0F;
-}
-
-body.light-mode .user-container.has-management:hover {
-    background-color: #065500;
-}
-
-/* Light mode login menu styles */
-body.light-mode .modal {
-    background-color: #818181;
-    color: #F1F1F1;
-}
-
-body.light-mode #password-input {
-    background-color: #818181;
-    color: #0F0F0F;
-    border-bottom: 1px solid #0F0F0F;
-}
-
-body.light-mode #password-input::placeholder {
-    color: #0F0F0F;
-}
-
+/* Fixed position elements */
 .data-icon {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    z-index: 999;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 100;
+}
+
+.data-icon:hover {
+    transform: scale(1.1);
+    background: var(--primary-light);
 }
 
 .data-icon img {
     width: 30px;
     height: 30px;
-    cursor: pointer;
-    filter: invert(100%);
+    filter: brightness(0) invert(1);
 }
 
-body.light-mode .data-icon img {
-    filter: none;
-}
-
-.add-user-button {
-    width: 35px;
-    height: 35px;
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    cursor: pointer;
-    background-color: #272727;
-    color: #F1F1F1;
-    border-radius: 50%; /* Makes it a circle */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-    z-index: 999;
-}
-
-
-.add-user-button:hover {
-    background-color: #444;
-}
-
-.add-user-icon {
-    font-size: 24px;
-    line-height: 50px;
-    cursor: pointer;
-}
-
-/* CSS for "Create User" button and "Add User" modal */
 .create-user-button {
-    width: 35px;
-    height: 35px;
     position: fixed;
-    bottom: 10px;
-    left: 10px;
-    cursor: pointer;
-    background-color: #272727;
-    color: #F1F1F1;
-    border-radius: 50%; /* Makes it a circle */
+    bottom: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 60px;
+    background: var(--success-color);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
-    z-index: 999;
+    font-size: 2rem;
+    color: white;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 100;
 }
 
 .create-user-button:hover {
-    background-color: #444;
-}
-
-body.light-mode .create-user-button {
-    background-color: #818181;
-}
-
-body.light-mode .create-user-button {
-    background-color: #A1A1A1;
+    transform: scale(1.1);
 }
 
 .create-user-menu-icon {
@@ -446,300 +433,80 @@ body.light-mode .create-user-button {
     align-items: center;
 }
 
-#add-user-menu {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    width: 300px;
-    background-color: #272727;
-    color: #F1F1F1;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-height: 90%;
-    overflow-y: auto;
+/* Light mode styles */
+body.light-mode .page-header {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
 }
 
-body.light-mode #add-user-menu {
-    background-color: #818181;
+body.light-mode .user-container {
+    background: white;
+    color: var(--text-dark);
 }
 
-
-/* Add User Modal Content Styles */
-.modal-content {
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+body.light-mode .settings-menu,
+body.light-mode .modal-content,
+body.light-mode .user-data-content {
+    background: white;
+    color: var(--text-dark);
 }
 
-/* Close Button Styles */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #F1F1F1;
-    font-size: 20px;
-    cursor: pointer;
-    font-size: 24px;
-    opacity: 0.7;
-    transition: opacity 0.3s;
+body.light-mode .settings-option,
+body.light-mode input,
+body.light-mode label,
+body.light-mode .modal-title {
+    color: var(--text-dark);
 }
 
-.close:hover {
-    opacity: 1;
+body.light-mode input {
+    background: rgba(0, 0, 0, 0.05);
 }
 
-/* Input Styles */
-input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    background-color: #272727;
-    color: #F1F1F1;
-    border-bottom: 1px solid #F1F1F1;
-    outline: none;
-    text-align: center;
+body.light-mode input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
 }
 
-#rfid-input {
-    width: 60%;
+body.light-mode .settings-option:hover {
+    background: rgba(0, 0, 0, 0.05);
 }
 
-/* Button Styles */
-.add-user-menu-button {
-    background-color: #3EA6FF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    width: auto;
-    transition: background-color 0.3s;
-    margin-left: 5px;
+body.light-mode .user-login-time {
+    background: rgba(0, 0, 0, 0.05);
 }
 
-#tap-rfid-button {
-    background-color: #3EA6FF;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    min-width: 80px;
-    border-radius: 5px;
-    text-align: center;
-    right: 10px;
-    transition: background-color 0.3s;
-    margin-left: 5px;
+body.light-mode .user-data-table th,
+body.light-mode .user-data-table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#tap-rfid-button:hover {
-    background-color: #3388CC;
-}
-
-#add-user-button {
-    background-color: #3EA6FF;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 10px 20px;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: background-color 0.3s;
-}
-
-#add-user-button:hover {
-    background-color: #3388CC;
-}
-
-#add-user-menu-content {
-    height: 225px;
-}
-
-#name-input {
-    width: 90%;
-}
-
-body.light-mode #name-input {
-    background-color: #818181;
-    color: #0F0F0F;
-    border-bottom: 1px solid #0F0F0F;
-    cursor: pointer;
-}
-
-body.light-mode #name-input::placeholder {
-    color: #0F0F0F;
-}
-
-body.light-mode #rfid-input {
-    background-color: #818181;
-    color: #0F0F0F;
-    border-bottom: 1px solid #0F0F0F;
-    cursor: pointer;
-}
-
-body.light-mode #rfid-input::placeholder {
-    color: #0F0F0F;
-}
-
-.input-container {
-    display: flex; /* Make child elements appear side by side */
-    align-items: center;
-    margin: 10px 0;
-    flex-direction: column;
-    margin-bottom: 10px;
-}
-
-.input-container label {
-    margin-bottom: 5px;
-    font-weight: 500;
-    text-align: left;
-}
-
-.input-with-button {
-    display: flex;
-    gap: 10px;
-}
-
-/* Styling for phones */
+/* Responsive styles */
 @media (max-width: 768px) {
-    .user-container {
-        width: calc(50% - 40px);
+    .users-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+        padding: 0 1rem 5rem;
     }
 
-    .settings-option:hover {
-        background-color: #272727;
-    }
-
-    #password-input {
-        outline: none;
-        border-top: 10px solid #272727;
-    }
-
-    #name-input {
-        outline: none;
-        border-top: 15px solid #272727;
-    }
-
-    #rfid-input {
-        outline: none;
-        border-top: 15px solid #272727;
-    }
-
-    body.light-mode #password-input {
-        border-top: 10px solid #818181;
-    }
-
-    body.light-mode #name-input {
-        border-top: 10px solid #818181;
-    }
-
-    body.light-mode #rfid-input {
-        border-top: 10px solid #818181;
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
     }
 
     .input-with-button {
         flex-direction: column;
     }
-  
-    .users-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+    .btn {
+        width: 100%;
     }
-}
 
-.user-count-badge {
-    display: inline-block;
-    font-size: 0.7em;
-    color: #A1A1A1;
-    font-weight: normal;
-}
+    .data-icon,
+    .create-user-button {
+        width: 50px;
+        height: 50px;
+    }
 
-body.light-mode .user-count-badge {
-    color: #555555;
-}
-
-/* Add to your style.css */
-:root {
-  --primary-color: #3EA6FF;
-  --secondary-color: #272727;
-  --text-color: #F1F1F1;
-  --error-color: #FF0000;
-  --border-radius: 8px;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Header styling */
-.page-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding: 20px 0;
-  margin-bottom: 20px;
-}
-
-h1 {
-  margin: 15px 0;
-}
-
-.header-controls {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-/* Users grid */
-.users-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 15px;
-  padding: 0 20px;
-}
-
-/* Form styling */
-.form-group {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-/* Button styling */
-.btn {
-  padding: 10px 15px;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.3s, transform 0.1s;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #3388CC;
-}
-
-.btn-secondary {
-  background-color: #444;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #555;
+    .data-icon img {
+        width: 25px;
+        height: 25px;
+    }
 }

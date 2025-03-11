@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="EnCa">
+<html lang="en-CA">
 
 <head>
-    <title>Data</title>
-    <link rel="stylesheet" type="text/css" href="data-style.css">
-    <script src="data.js"></script>
+    <title>Attendance Data</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
+    <link rel="stylesheet" type="text/css" href="data-style.css">
 </head>
 
 <body>
@@ -20,7 +22,7 @@
             </div>
         </div>
 
-        <h1>Data</h1>
+        <h1>User Hours</h1>
 
         <div class="control-bar">
             <div class="search-filter-container">
@@ -35,13 +37,11 @@
                     <img src="filter-icon.png" alt="Filter Icon">
                 </div>
                 <div class="filter-container">
-                    <div class="filter-icon" onclick="toggleFilterMenu()"></div>
                     <div class="filter-menu">
                         <div class="filter-option" id="filterTable" onclick="applySorting('name-asc')">Name A-Z</div>
                         <div class="filter-option" id="filterTable" onclick="applySorting('name-desc')">Name Z-A</div>
                         <div class="filter-option" id="filterTable" onclick="applySorting('hours-asc')">Hours (Ascending)</div>
                         <div class="filter-option" id="filterTable" onclick="applySorting('hours-desc')">Hours (Descending)</div>
-
                     </div>
                 </div>
             </div>
@@ -50,13 +50,14 @@
 
     <table>
         <thead>
-        <tr>
-            <th>Name</th>
-            <th>Hours</th>
-        </tr>
+            <tr>
+                <th>Name</th>
+                <th>Hours</th>
+            </tr>
         </thead>
         <tbody></tbody>
     </table>
+
     <div id="arrow-icon" class="arrow-icon" onclick="goBack()">
         <img src="back-arrow.png" alt="Back Arrow">
     </div>
